@@ -1,4 +1,4 @@
-from operacion import operacion
+from . import operacion
 import json
 
 class history:
