@@ -29,11 +29,11 @@
                     <input name= "dato2" id = "dato2"type="text" class="form-control" placeholder="Dato2">
                  </div>
                  <button onclick="Sumar()" type="button" class="btn btn-black">+</button>
-                 <button onclick="Registrarse()" type="button" class="btn btn-black">-</button>
-                 <button onclick="Registrarse()" type="button" class="btn btn-black">*</button>
-                 <button onclick="Registrarse()" type="button" class="btn btn-black">/</button>
-                 <button onclick="Registrarse()" type="button" class="btn btn-black">^</button>
-                 <button onclick="Registrarse()" type="button" class="btn btn-black">&radic;</button>
+                 <button onclick="Restar()" type="button" class="btn btn-black">-</button>
+                 <button onclick="Multiplicar()" type="button" class="btn btn-black">*</button>
+                 <button onclick="Dividir()" type="button" class="btn btn-black">/</button>
+                 <button onclick="Potencia()" type="button" class="btn btn-black">^</button>
+                 <button onclick="Raiz()" type="button" class="btn btn-black">&radic;</button>
                  <div class="form-group">
                     <label>Resultado</label>
                     <input name = "resultado"id = "resultado"type="text" class="form-control" placeholder="Resultado">
@@ -98,6 +98,203 @@
      }) 
    }
 
+   function Restar(){
+    
+    var dato1 = document.querySelector('#dato1').value
+    var dato2 = document.querySelector('#dato2').value
+    
+    var objeto = {
+        'a': dato1,
+        'b': dato2
+    }
+
+    console.log(objeto)
+    var bbody = JSON.stringify(objeto)
+    console.log(bbody)
+    fetch('http://localhost:5000/resta', {
+    method: 'POST', 
+    body: bbody, 
+    headers:{
+        'Content-Type': 'application/json'
+    }
+
+    }).then(res => res.json())
+    .catch(err => {
+    console.error('Error:', err)
+    alert("Ocurrio un error, ver la consola")
+    })
+    .then(response =>{
+
+    console.log(response);
+    console.log(response.mensaje);
+    console.log(response.resultado);
+
+    if(response.message == "ERRORSYNTAX"){
+        alert("ERRORSYNTAX revisar datos")
+    }else{
+        colocarResultado(response.mensaje, response.resultado)
+    }
+    }) 
+  }
+  //Multiplicar
+  function Multiplicar(){
+    
+    var dato1 = document.querySelector('#dato1').value
+    var dato2 = document.querySelector('#dato2').value
+    
+    var objeto = {
+        'a': dato1,
+        'b': dato2
+    }
+
+    console.log(objeto)
+    var bbody = JSON.stringify(objeto)
+    console.log(bbody)
+    fetch('http://localhost:5000/multiplicacion', {
+    method: 'POST', 
+    body: bbody, 
+    headers:{
+        'Content-Type': 'application/json'
+    }
+
+    }).then(res => res.json())
+    .catch(err => {
+    console.error('Error:', err)
+    alert("Ocurrio un error, ver la consola")
+    })
+    .then(response =>{
+
+    console.log(response);
+    console.log(response.mensaje);
+    console.log(response.resultado);
+
+    if(response.message == "ERRORSYNTAX"){
+        alert("ERRORSYNTAX")
+    }else{
+        colocarResultado(response.mensaje, response.resultado)
+    }
+    }) 
+  }
+  //Funcion Dividir
+
+  function Dividir(){
+    
+    var dato1 = document.querySelector('#dato1').value
+    var dato2 = document.querySelector('#dato2').value
+    
+    var objeto = {
+        'a': dato1,
+        'b': dato2
+    }
+
+    console.log(objeto)
+    var bbody = JSON.stringify(objeto)
+    console.log(bbody)
+    fetch('http://localhost:5000/division', {
+    method: 'POST', 
+    body: bbody, 
+    headers:{
+        'Content-Type': 'application/json'
+    }
+
+    }).then(res => res.json())
+    .catch(err => {
+    console.error('Error:', err)
+    alert("Ocurrio un error, ver la consola")
+    })
+    .then(response =>{
+
+    console.log(response);
+    console.log(response.mensaje);
+    console.log(response.resultado);
+
+    if(response.message == "ERRORSYNTAX"){
+        alert("ERRORSYNTAX no se puede dividir entre 0")
+    }else{
+        colocarResultado(response.mensaje, response.resultado)
+    }
+    }) 
+  }
+  //Funcion Raiz
+
+  function Raiz(){
+    
+    var dato1 = document.querySelector('#dato1').value
+    var dato2 = document.querySelector('#dato2').value
+    
+    var objeto = {
+        'a': dato1,
+        'b': dato2
+    }
+
+    console.log(objeto)
+    var bbody = JSON.stringify(objeto)
+    console.log(bbody)
+    fetch('http://localhost:5000/raiz', {
+    method: 'POST', 
+    body: bbody, 
+    headers:{
+        'Content-Type': 'application/json'
+    }
+
+    }).then(res => res.json())
+    .catch(err => {
+    console.error('Error:', err)
+    alert("Ocurrio un error, ver la consola")
+    })
+    .then(response =>{
+
+    console.log(response);
+    console.log(response.mensaje);
+    console.log(response.resultado);
+
+    if(response.message == "ERRORSYNTAX"){
+        alert("ERRORSYNTAX no se puede raiz entre 0")
+    }else{
+        colocarResultado(response.mensaje, response.resultado)
+    }
+    }) 
+  } 
+  //potencia
+  function Potencia(){
+    
+    var dato1 = document.querySelector('#dato1').value
+    var dato2 = document.querySelector('#dato2').value
+    
+    var objeto = {
+        'a': dato1,
+        'b': dato2
+    }
+
+    console.log(objeto)
+    var bbody = JSON.stringify(objeto)
+    console.log(bbody)
+    fetch('http://localhost:5000/potencia', {
+    method: 'POST', 
+    body: bbody, 
+    headers:{
+        'Content-Type': 'application/json'
+    }
+
+    }).then(res => res.json())
+    .catch(err => {
+    console.error('Error:', err)
+    alert("Ocurrio un error, ver la consola")
+    })
+    .then(response =>{
+
+    console.log(response);
+    console.log(response.mensaje);
+    console.log(response.resultado);
+
+    if(response.message == "ERRORSYNTAX"){
+        alert("ERRORSYNTAX")
+    }else{
+        colocarResultado(response.mensaje, response.resultado)
+    }
+    }) 
+  } 
+  
    function colocarResultado(mensaje, resultado){
     $("#resultado").val(resultado)
    }
