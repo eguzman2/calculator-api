@@ -20,13 +20,15 @@ def index():
 @app.route('/suma', methods=['POST'])
 def suma():
 	if request.method == 'POST':
-        type = 'suma'
-		a = request.form.get('a')
+        a = request.form.get('a')
         b = request.form.get('b')
 
-		suma = new operacion()
+		suma = operacion(a, b , 'suma')
+        result, message = suma.run()
+
 		return {
-			"resultado": new_string
+			"resultado": result
+            "mensaje": message
 		}
 
 if __name__ == "__main__":

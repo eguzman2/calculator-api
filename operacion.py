@@ -1,13 +1,14 @@
 class Pokemon:
 
-    def __init__(self, id, date, parm_a, parm_b, type, result):
-        self.date = date
+    def __init__(self, parm_a, parm_b, operation_type):
+        self.date = self.get_date()
         self.parm_a = parm_a
-        self.parm_b = partm_b
-        self.type = type
-        self.result = result
+        self.parm_b = parm_b
+        self.operation_type = operation_type
 
 
+    def get_date(self):
+    	return 'fecha'
 
     def dump(self):
 
@@ -16,3 +17,7 @@ class Pokemon:
             'date': self.date,
 
         }
+
+     def run(self):
+     	if self.operation_type == 'suma':
+     		return a * b,  'Satisfactorio'
