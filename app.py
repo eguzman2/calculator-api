@@ -14,9 +14,8 @@ def index():
 @app.route('/suma', methods=['POST'])
 def suma():
     if request.method == 'POST':
-        a = request.form.get('a')
-        b = request.form.get('b')
-
+        a = request.json['a']
+        b = request.json['b']
         suma = Operacion(a, b , 'suma')
         result = suma.run()
 

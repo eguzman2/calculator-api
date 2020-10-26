@@ -14,8 +14,8 @@ class Operacion:
     def dump(self):
         return {
             'fecha': self.date,
-            'a': self.parm_a,  
-            'b': self.parm_b,
+            'a': int(self.parm_a),
+            'b': int(self.parm_b),
             'tipo': self.operation_type,
             'resultado': self.result
         }
@@ -26,17 +26,5 @@ class Operacion:
     	if self.operation_type == 'suma':
     		result['result'] = self.parm_a + self.parm_b
     		result['message'] = 'EXITO'
-
-    	if self.operation_type == 'resta':
-    		result['result'] = self.parm_a - self.parm_b
-    		result['message'] = 'EXITO'
-
-    	if self.operation_type == 'multiplicacion':
-
-    	if self.operation_type == 'division':
-
-    	if self.operation_type == 'radicacion':
-
-    	if self.operation_type == 'potencia':
 
     	return result
